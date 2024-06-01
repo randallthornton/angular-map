@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AssetsComponent } from './pages/assets/assets.component';
 import { MapComponent } from './pages/map/map.component';
 import { LocationsComponent } from './pages/locations/locations.component';
+import { LeafletMapComponent } from './pages/leaflet-map/leaflet-map.component';
 
 const routes: Routes = [
   {
@@ -15,7 +16,7 @@ const routes: Routes = [
   },
   {
     path: 'map',
-    component: MapComponent,
+    component: LeafletMapComponent,
   },
   {
     path: '',

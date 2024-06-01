@@ -15,12 +15,14 @@ import { provideHttpClient } from '@angular/common/http';
 import { LocationsComponent } from './pages/locations/locations.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
+import { LeafletMapComponent } from './pages/leaflet-map/leaflet-map.component';
 @NgModule({
   declarations: [
     AppComponent,
     AssetsComponent,
     MapComponent,
     LocationsComponent,
+    LeafletMapComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,7 +35,18 @@ import { MatIconModule } from '@angular/material/icon';
     MatToolbarModule,
     MatIconModule,
   ],
-  providers: [provideAnimationsAsync(), provideHttpClient()],
+  providers: [
+    provideAnimationsAsync(),
+    provideHttpClient(),
+    {
+      provide: Window,
+      useValue: window,
+    },
+    {
+      provide: Navigator,
+      useValue: navigator,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

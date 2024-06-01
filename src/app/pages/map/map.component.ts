@@ -14,18 +14,44 @@ export class MapComponent {
   title = 'map';
   map?: Map;
 
+  constructor(private Navigator: Navigator) {}
+
   ngOnInit() {
-    this.map = new Map({
-      target: 'map',
-      layers: [
-        new TileLayer({
-          source: new OSM(),
-        }),
-      ],
-      view: new View({
-        center: olProj.fromLonLat([37.41, 8.82]),
-        zoom: 4,
-      }),
-    });
+    new Promise<GeolocationPosition>((resolve, reject) => {
+      this.Navigator.geolocation.getCurrentPosition(resolve, reject);
+    })
+      .then((data) => {
+        this.map = new Map({
+          target: 'map',
+          layers: [
+            new TileLayer({
+              source: new OSM(),
+            }),
+          ],
+          view: new View({
+            center: olProj.fromLonLat([
+              data.coords.longitude,
+              data.coords.latitude,
+            ]),
+            zoom: 4,
+          }),
+        });
+      })
+      .catch((error) => {
+        console.error(error);
+
+        this.map = new Map({
+          target: 'map',
+          layers: [
+            new TileLayer({
+              source: new OSM(),
+            }),
+          ],
+          view: new View({
+            center: olProj.fromLonLat([-74.006, 40.7128]),
+            zoom: 4,
+          }),
+        });
+      });
   }
 }
