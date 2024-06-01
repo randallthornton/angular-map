@@ -42,4 +42,16 @@ export class AssetsComponent {
       name: this.createAssetForm.value.name!,
     });
   }
+
+  onRemoveAssetClicked(asset: Asset) {
+    this.api
+      .deleteAsset(asset.id)
+      .pipe(
+        switchMap(() => this.api.getAssets()),
+        tap((data) => {
+          this.assets.set(data);
+        })
+      )
+      .subscribe();
+  }
 }

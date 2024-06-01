@@ -6,6 +6,16 @@
   <mat-card-header>
     <mat-card-title>{{ asset.name }}</mat-card-title>
   </mat-card-header>
+  <mat-card-actions>
+    <button mat-raised-button color="primary">Show on map</button>
+    <button
+      mat-raised-button
+      (click)="onRemoveAssetClicked(asset)"
+      color="warn"
+    >
+      Remove
+    </button>
+  </mat-card-actions>
 </mat-card>
 }
 

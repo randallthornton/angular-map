@@ -2,6 +2,7 @@ import { Component, WritableSignal, signal } from '@angular/core';
 import { LocationsService } from '../../services/locations.service';
 import { Location } from '../../models/location';
 import { FormBuilder, Validators } from '@angular/forms';
+import { switchMap, tap } from 'rxjs';
 
 @Component({
   selector: 'app-locations',
@@ -53,5 +54,17 @@ export class LocationsComponent {
       latitude: data.coords.latitude,
       longitude: data.coords.longitude,
     });
+  }
+
+  onRemoveLocationClicked(location: Location) {
+    this.locationsService
+      .deleteLocation(location.id)
+      .pipe(
+        switchMap(() => this.locationsService.getLocations()),
+        tap((data) => {
+          this.locations.set(data);
+        })
+      )
+      .subscribe();
   }
 }

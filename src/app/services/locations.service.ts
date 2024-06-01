@@ -15,4 +15,8 @@ export class LocationsService {
   createLocation(location: any) {
     return this.http.post('/api/locations', location);
   }
+
+  deleteLocation(id: number) {
+    return this.http.delete(`/api/locations/${id}`);
+  }
 }

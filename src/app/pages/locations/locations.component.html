@@ -9,6 +9,16 @@
     <mat-card-subtitle>Latitude: {{ location.latitude }}</mat-card-subtitle>
     <mat-card-subtitle>Longitude: {{ location.longitude }}</mat-card-subtitle>
   </mat-card-header>
+  <mat-card-actions>
+    <button mat-raised-button color="primary">Show on map</button>
+    <button
+      mat-raised-button
+      (click)="onRemoveLocationClicked(location)"
+      color="warn"
+    >
+      Remove
+    </button>
+  </mat-card-actions>
 </mat-card>
 }
 

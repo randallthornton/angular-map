@@ -15,4 +15,8 @@ export class AssetsService {
   createAsset(body: any) {
     return this.http.post<Asset>('/api/assets', body);
   }
+
+  deleteAsset(id: number) {
+    return this.http.delete(`/api/assets/${id}`);
+  }
 }
