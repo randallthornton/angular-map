@@ -1,5 +1,24 @@
 <h2>Movements</h2>
 
+@for(movement of movements(); track $index) {
+<mat-card class="my-4">
+  <mat-card-header>
+    <mat-card-title
+      >{{ movement.asset.name }} -- {{ movement.location.name }}</mat-card-title
+    >
+    <mat-card-subtitle>{{
+      movement.timestamp | date : "MM/dd/yyyy hh:mm:ss a"
+    }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-actions>
+    <button mat-button color="primary">Edit</button>
+    <button mat-button color="warn" (click)="onDeleteMovementClicked(movement)">
+      Delete
+    </button>
+  </mat-card-actions>
+</mat-card>
+}
+
 <h3>Create Movement</h3>
 <form class="grid grid-cols-3 gap-4" [formGroup]="form">
   <mat-form-field>
