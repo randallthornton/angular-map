@@ -1,0 +1,38 @@
+<h3>Known locations</h3>
+
+@if(locations().length === 0) {
+<p>No locations found</p>
+} @for (location of locations(); track $index) {
+<mat-card class="my-4">
+  <mat-card-header>
+    <mat-card-title>{{ location.name }}</mat-card-title>
+  </mat-card-header>
+</mat-card>
+}
+
+<h3>Create a new Location</h3>
+
+<form [formGroup]="createLocationForm" class="grid grid-cols-3 gap-4">
+  <mat-form-field>
+    <mat-label>Location Name</mat-label>
+    <input matInput placeholder="Location Name" formControlName="name" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Latitude</mat-label>
+    <input matInput placeholder="Latitude" formControlName="latitude" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Longitude</mat-label>
+    <input matInput placeholder="Longitude" formControlName="longitude" />
+  </mat-form-field>
+
+  <button
+    class="col-span-3"
+    mat-raised-button
+    (click)="onAddLocationClicked()"
+    type="submit"
+  >
+    Add Location
+  </button>
+</form>

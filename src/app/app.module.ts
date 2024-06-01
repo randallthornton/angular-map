@@ -12,8 +12,16 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button'; // Import the MatButtonModule module
 import { provideHttpClient } from '@angular/common/http';
+import { LocationsComponent } from './pages/locations/locations.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
 @NgModule({
-  declarations: [AppComponent, AssetsComponent, MapComponent],
+  declarations: [
+    AppComponent,
+    AssetsComponent,
+    MapComponent,
+    LocationsComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -22,6 +30,8 @@ import { provideHttpClient } from '@angular/common/http';
     ReactiveFormsModule,
     MatInputModule,
     MatButtonModule,
+    MatToolbarModule,
+    MatIconModule,
   ],
   providers: [provideAnimationsAsync(), provideHttpClient()],
   bootstrap: [AppComponent],
