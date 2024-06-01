@@ -16,6 +16,7 @@ import { LocationsComponent } from './pages/locations/locations.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { LeafletMapComponent } from './pages/leaflet-map/leaflet-map.component';
+import { MovementsComponent } from './pages/movements/movements.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,6 +24,7 @@ import { LeafletMapComponent } from './pages/leaflet-map/leaflet-map.component';
     MapComponent,
     LocationsComponent,
     LeafletMapComponent,
+    MovementsComponent,
   ],
   imports: [
     BrowserModule,

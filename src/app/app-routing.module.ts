@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AssetsComponent } from './pages/assets/assets.component';
-import { MapComponent } from './pages/map/map.component';
 import { LocationsComponent } from './pages/locations/locations.component';
 import { LeafletMapComponent } from './pages/leaflet-map/leaflet-map.component';
+import { MovementsComponent } from './pages/movements/movements.component';
 
 const routes: Routes = [
   {
@@ -13,6 +13,10 @@ const routes: Routes = [
   {
     path: 'locations',
     component: LocationsComponent,
+  },
+  {
+    path: 'movements',
+    component: MovementsComponent,
   },
   {
     path: 'map',

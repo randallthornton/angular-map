@@ -1,0 +1,36 @@
+<h2>Movements</h2>
+
+<h3>Create Movement</h3>
+<form class="grid grid-cols-3 gap-4" [formGroup]="form">
+  <mat-form-field>
+    <mat-label>Asset</mat-label>
+    <input matInput placeholder="Asset" formControlName="assetId" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Location</mat-label>
+    <input matInput placeholder="Location" formControlName="locationId" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Timestamp</mat-label>
+    <input
+      matInput
+      placeholder="Timestamp"
+      formControlName="timestamp"
+      type="datetime-local"
+    />
+    <button matSuffix mat-icon-button (click)="onNowClicked()">
+      <mat-icon>next</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="onCreateMovementClicked()"
+    type="submit"
+  >
+    Create
+  </button>
+</form>
