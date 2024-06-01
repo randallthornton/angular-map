@@ -17,6 +17,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { LeafletMapComponent } from './pages/leaflet-map/leaflet-map.component';
 import { MovementsComponent } from './pages/movements/movements.component';
+import { MatSelectModule } from '@angular/material/select';
+import { OrganizationsComponent } from './pages/organizations/organizations.component';
+import { MatMenuModule } from '@angular/material/menu';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +28,7 @@ import { MovementsComponent } from './pages/movements/movements.component';
     LocationsComponent,
     LeafletMapComponent,
     MovementsComponent,
+    OrganizationsComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,7 +39,9 @@ import { MovementsComponent } from './pages/movements/movements.component';
     MatInputModule,
     MatButtonModule,
     MatToolbarModule,
+    MatSelectModule,
     MatIconModule,
+    MatMenuModule,
   ],
   providers: [
     provideAnimationsAsync(),

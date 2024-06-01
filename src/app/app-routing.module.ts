@@ -4,6 +4,7 @@ import { AssetsComponent } from './pages/assets/assets.component';
 import { LocationsComponent } from './pages/locations/locations.component';
 import { LeafletMapComponent } from './pages/leaflet-map/leaflet-map.component';
 import { MovementsComponent } from './pages/movements/movements.component';
+import { OrganizationsComponent } from './pages/organizations/organizations.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: 'map',
     component: LeafletMapComponent,
+  },
+  {
+    path: 'organizations',
+    component: OrganizationsComponent,
   },
   {
     path: '',

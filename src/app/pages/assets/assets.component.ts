@@ -3,6 +3,7 @@ import { Asset } from '../../models/asset';
 import { AssetsService } from '../../services/assets.service';
 import { switchMap, tap } from 'rxjs';
 import { FormBuilder, Validators } from '@angular/forms';
+import { OrganizationsService } from '../../organizations.service';
 
 @Component({
   selector: 'app-assets',
@@ -15,15 +16,23 @@ export class AssetsComponent {
     name: ['', Validators.required],
   });
 
-  constructor(private api: AssetsService, private fb: FormBuilder) {
+  constructor(
+    private api: AssetsService,
+    private fb: FormBuilder,
+    private orgsService: OrganizationsService
+  ) {
     this.api.getAssets().subscribe((data) => {
       this.assets.set(data);
     });
   }
 
   addAsset(asset: any) {
+    const orgId = this.orgsService.selectedOrganization()!.id;
     this.api
-      .createAsset(asset)
+      .createAsset({
+        ...asset,
+        organizationId: orgId,
+      })
       .pipe(
         switchMap(() => this.api.getAssets()),
         tap((data) => {

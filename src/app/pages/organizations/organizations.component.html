@@ -1,0 +1,37 @@
+<h3>Current Organizations</h3>
+
+@if(organizations().length === 0) {
+<p>No organizations found</p>
+} @for (organization of organizations(); track $index) {
+<mat-card class="my-4">
+  <mat-card-header>
+    <mat-card-title>{{ organization.name }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-actions>
+    <button
+      mat-raised-button
+      (click)="onRemoveOrganizationClicked(organization)"
+      color="warn"
+    >
+      Remove
+    </button>
+  </mat-card-actions>
+</mat-card>
+}
+
+<h3>Create Organization</h3>
+
+<form [formGroup]="createForm" class="grid grid-cols-3 gap-4">
+  <mat-form-field>
+    <mat-label>Organization Name</mat-label>
+    <input matInput placeholder="Organization Name" formControlName="name" />
+  </mat-form-field>
+  <button
+    class="col-span-3"
+    mat-raised-button
+    (click)="onAddOrganizationClicked()"
+    type="submit"
+  >
+    Add Organization
+  </button>
+</form>

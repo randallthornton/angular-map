@@ -1,11 +1,24 @@
 <mat-toolbar>
-  <button mat-icon-button><mat-icon>menu</mat-icon></button>
+  <button mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item routerLink="/locations">Locations</button>
+    <button mat-menu-item routerLink="/assets">Assets</button>
+    <button mat-menu-item routerLink="/movements">Movements</button>
+    <button mat-menu-item routerLink="/organizations">Organizations</button>
+  </mat-menu>
   <a mat-icon-button routerLink="/"><mat-icon>map</mat-icon></a>
   <span>Angular Map Testing</span>
   <span class="flex-grow"></span>
-  <a mat-button routerLink="/locations">Locations</a>
-  <a mat-button routerLink="/assets">Assets</a>
-  <a mat-button routerLink="/movements">Movements</a>
+  <mat-form-field class="mt-4">
+    <mat-label>Organization</mat-label>
+    <mat-select (selectionChange)="onOrgSelected($event)">
+      @for(org of organizations(); track $index) {
+      <mat-option [value]="org">{{ org.name }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
 </mat-toolbar>
 <div class="px-8 py-4">
   <h2>Angular Map Testing</h2>
